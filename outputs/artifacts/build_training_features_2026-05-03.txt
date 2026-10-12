@@ -1,0 +1,62 @@
+Building training features (as_of=2026-05-03)...
+  1400 rows x 9 features
+
+Quality checks (default parameters):
+[PASS] no_nulls: No nulls found in any feature column.
+[PASS] row_count: One row per customer; row count matches expected 1400.
+[PASS] zero_activity_defaults: All 230 zero-activity customers carry the spec'd defaults.
+[PASS] zero_activity_days_since_last_txn: Zero-activity days_since_last_txn equals days since signup.
+[PASS] bounds: All features within spec bounds.
+[PASS] acquisition_channel: All acquisition channels are known values.
+All quality checks passed.
+
+Registering non-versioned candidate features:
+  life_span_days: registered v1
+  spend_ratio_last_3m_vs_previous: registered v1
+  txn_ratio_last_3m_vs_previous: registered v1
+  acquisition_channel: registered v1
+  has_txn_history: registered v1
+  days_since_last_txn: registered v1
+  return_pct: registered v1
+
+Versioning exercise (feature_spec.md):
+  quality checks for txn_count_window {'window_days': 90}:
+[PASS] no_nulls: No nulls found in any feature column.
+[PASS] row_count: One row per customer; row count matches expected 1400.
+[PASS] zero_activity_defaults: All 230 zero-activity customers carry the spec'd defaults.
+[PASS] zero_activity_days_since_last_txn: Zero-activity days_since_last_txn equals days since signup.
+[PASS] bounds: All features within spec bounds.
+[PASS] acquisition_channel: All acquisition channels are known values.
+All quality checks passed.
+  txn_count_window {'window_days': 90}: registered v1
+  quality checks for txn_count_window {'window_days': 30}:
+[PASS] no_nulls: No nulls found in any feature column.
+[PASS] row_count: One row per customer; row count matches expected 1400.
+[PASS] zero_activity_defaults: All 230 zero-activity customers carry the spec'd defaults.
+[PASS] zero_activity_days_since_last_txn: Zero-activity days_since_last_txn equals days since signup.
+[PASS] bounds: All features within spec bounds.
+[PASS] acquisition_channel: All acquisition channels are known values.
+All quality checks passed.
+  txn_count_window {'window_days': 30}: registered v2
+  txn_count_window: is_latest -> v2 {"window_days": 30}
+  quality checks for return_count_recent {'window_days': 90}:
+[PASS] no_nulls: No nulls found in any feature column.
+[PASS] row_count: One row per customer; row count matches expected 1400.
+[PASS] zero_activity_defaults: All 230 zero-activity customers carry the spec'd defaults.
+[PASS] zero_activity_days_since_last_txn: Zero-activity days_since_last_txn equals days since signup.
+[PASS] bounds: All features within spec bounds.
+[PASS] acquisition_channel: All acquisition channels are known values.
+All quality checks passed.
+  return_count_recent {'window_days': 90}: registered v1
+  quality checks for return_count_recent {'window_days': 180}:
+[PASS] no_nulls: No nulls found in any feature column.
+[PASS] row_count: One row per customer; row count matches expected 1400.
+[PASS] zero_activity_defaults: All 230 zero-activity customers carry the spec'd defaults.
+[PASS] zero_activity_days_since_last_txn: Zero-activity days_since_last_txn equals days since signup.
+[PASS] bounds: All features within spec bounds.
+[PASS] acquisition_channel: All acquisition channels are known values.
+All quality checks passed.
+  return_count_recent {'window_days': 180}: registered v2
+  return_count_recent: is_latest -> v2 {"window_days": 180}
+
+Build complete. Registry: feature_store/registry.db, snapshots: feature_store/values/

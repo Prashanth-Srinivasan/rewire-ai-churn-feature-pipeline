@@ -1,0 +1,31 @@
+customers: (1500, 5) nulls=0
+customer_id                     int64
+signup_date            datetime64[us]
+acquisition_channel               str
+region                            str
+churned                         int64
+
+transactions: (11742, 6) nulls=0
+customer_id               int64
+txn_timestamp    datetime64[ns]
+category                    str
+channel                     str
+amount                  float64
+is_returned               int64
+
+monthly_agg: (8086, 5) nulls=0
+customer_id              int64
+txn_month       datetime64[us]
+txn_count                int64
+total_amount           float64
+return_count             int64
+
+zero-activity customers: 81
+txn customers missing from parquet: [414, 434, 516, 699, 791, 845, 872, 1237, 1433, 1446]
+customer-months disagreeing (row-level vs parquet), last 3 months:
+ m
+2026-05-01      0
+2026-06-01      0
+2026-07-01    212
+spot-check customer 1: db=[] parquet=[]
+spot-check customer 2: db=[[Timestamp('2026-07-01 00:00:00'), 2]] parquet=[[Timestamp('2026-07-01 00:00:00'), 1]]

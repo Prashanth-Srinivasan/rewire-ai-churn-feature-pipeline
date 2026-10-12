@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip install *)",
+      "Bash(python3 *)",
+      "Bash(sqlite3 feature_store/registry.db \"SELECT feature_name, version, is_latest, parameters, parquet_path FROM feature_registry ORDER BY feature_name, version;\")",
+      "Bash(./../.venv/bin/python scripts/compare_feature_versions.py)"
+    ]
+  }
+}
